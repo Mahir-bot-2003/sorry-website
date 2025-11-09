@@ -1,0 +1,478 @@
+/* --- [1] Design System & Setup --- */
+:root {
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+
+    /* Cinematic Color Palette */
+    --color-bg: #100a1c; /* Deep navy night */
+    --color-text: #f0f4f8;
+    --color-text-secondary: #b0c4de;
+    --color-glass: rgba(255, 255, 255, 0.05);
+    --color-glass-border: rgba(255, 255, 255, 0.1);
+    --color-glow: #a890d3; /* Lavender glow */
+    --color-blush: #f4c2c2; /* Blush pink */
+    --color-rose-gold: #d9b99b;
+    --color-heart: #ff6b81;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background-image: radial-gradient(circle at 10% 10%, rgba(168, 144, 211, 0.15) 0%, rgba(168, 144, 211, 0) 40%),
+                      radial-gradient(circle at 90% 80%, rgba(217, 185, 155, 0.1) 0%, rgba(217, 185, 155, 0) 50%);
+    background-attachment: fixed;
+}
+
+/* --- [2] Reusable Components --- */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.btn {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    -webkit-tap-highlight-color: transparent; /* For mobile taps */
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-rose-gold), var(--color-blush));
+    color: var(--color-bg);
+}
+.btn-primary:hover, .btn-primary:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(217, 185, 155, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-blush);
+    border: 2px solid var(--color-blush);
+}
+.btn-secondary:hover, .btn-secondary:focus {
+    background-color: var(--color-blush);
+    color: var(--color-bg);
+    box-shadow: 0 6px 20px rgba(244, 194, 194, 0.2);
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+    background: var(--color-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--color-blush);
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h3 {
+     font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+section {
+    padding: 6rem 0;
+    position: relative;
+}
+
+/* --- [3] Page Sections --- */
+
+/* Hero Section */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--color-glow) 0%, rgba(168, 144, 211, 0) 70%);
+    filter: blur(80px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.hero-content {
+    animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#hero h1 {
+    margin-bottom: 1rem;
+}
+
+#hero .subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+}
+
+#typing-effect {
+    display: block;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 300;
+    color: var(--color-blush);
+    min-height: 2.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Typing cursor */
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.4rem;
+    background-color: var(--color-blush);
+    margin-left: 5px;
+    animation: blink 0.7s infinite;
+    position: relative;
+    top: 3px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    margin: 2rem auto;
+    background-color: var(--color-glass);
+    border-radius: 20px;
+    border: 1px solid var(--color-glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    color: var(--color-text-secondary);
+    background-image: url('https://placehold.co/600x400/100a1c/f0f4f8?text=A+warm+hug+at+sunset&font=playfairdisplay');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Promise Section */
+#promises {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.promise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.promise-card {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: var(--font-serif);
+    transform: rotate(-1.5deg); /* Handwritten feel */
+}
+.promise-card:nth-child(2) {
+    transform: rotate(1deg);
+}
+.promise-card:nth-child(3) {
+    transform: rotate(-0.5deg);
+}
+.promise-card:hover {
+    transform: rotate(0) scale(1.03);
+}
+.promise-card p {
+    font-style: italic;
+    color: var(--color-text);
+}
+
+/* Memory Section */
+.memory-carousel {
+    display: flex;
+    overflow-x: auto;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    /* Enable snapping */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--color-glass-border) transparent; /* Firefox */
+}
+
+/* Webkit scrollbar */
+.memory-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+.memory-carousel::-webkit-scrollbar-track {
+    background: transparent;
+}
+.memory-carousel::-webkit-scrollbar-thumb {
+    background-color: var(--color-glass-border);
+    border-radius: 10px;
+}
+
+.memory-card {
+    flex: 0 0 300px;
+    scroll-snap-align: center;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.memory-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.memory-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+}
+
+.memory-card-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 2rem 1rem 1rem 1rem;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--color-blush);
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.pulsing-heart {
+    color: var(--color-heart);
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* --- [4] Modals & Overlays --- */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 10, 28, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.modal.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    padding: 3rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: zoomIn 0.5s ease-out;
+    /* Candlelight glow */
+    box-shadow: 0 0 30px 10px rgba(217, 185, 155, 0.15), 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal h3 {
+    margin-bottom: 1.5rem;
+}
+
+.modal p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    min-height: 100px;
+}
+
+.modal .button-group {
+    margin-top: 2rem;
+    justify-content: flex-end;
+}
+
+/* Simple modal for memory description */
+#memory-modal .modal-content {
+    max-width: 450px;
+    text-align: center;
+}
+#memory-modal p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--color-text);
+}
+
+/* --- [5] Animations (Hearts & Confetti) --- */
+
+/* Container for background animations */
+#animation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -10;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    font-size: 1rem;
+    color: var(--color-blush);
+    opacity: 0;
+    animation: floatUp 10s ease-in infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Confetti */
+.confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-blush);
+    border-radius: 50%;
+    opacity: 0;
+    animation: confetti-fall 3s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* --- [6] Utilities & Fallbacks --- */
+
+.hidden {
+    display: none;
+}
+
+noscript {
+    display: block;
+    background-color: #ffc;
+    color: #333;
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+noscript p {
+    max-width: 600px;
+    margin: 0 auto;
+}

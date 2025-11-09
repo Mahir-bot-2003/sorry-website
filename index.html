@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+      Page Title: For You — The One
+      This is the apology and promise I built for you.
+    -->
+    <title>For You — The One</title>
+    <meta name="description" content="I was at my worst, and you still saw the best in me. This is my promise — to make you feel safe, loved, and home.">
+    
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <!-- Fallback for no JavaScript -->
+    <noscript>
+        <p>My Love,
+        <br><br>
+        This page needs JavaScript to show you my full apology, but the words are what matter.
+        <br><br>
+        I am so sorry. I shouted when I should have held you. You are my peace, and I promise to be your safe space, always.
+        <br><br>
+        — With all my love
+        </p>
+    </noscript>
+
+    <!-- Background Animation Containers -->
+    <div id="animation-container">
+        <div id="hearts-container"></div>
+        <div id="confetti-container"></div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <main>
+
+        <!-- [ HERO ] -->
+        <section id="hero">
+            <div class="container hero-content">
+                <h1>To My Love — I’m Sorry</h1>
+                <p class="subtitle" id="hero-message">You deserve peace, patience, and safety. This page is my apology and my promise to you.</p>
+                <div id="typing-effect">
+                    <span id="typing-text"></span><span class="typing-cursor"></span>
+                </div>
+                
+                <div class="hero-image" aria-label="A warm hug at sunset">
+                    <!-- Image is a background-image in CSS -->
+                </div>
+
+                <div class="button-group">
+                    <button id="forgive-btn" class="btn btn-primary">💕 Forgive Me</button>
+                    <button id="hug-btn" class="btn btn-secondary">🤍 Hug Me</button>
+                    <button id="read-letter-btn" class="btn btn-secondary">💌 Read My Letter</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- [ PROMISES ] -->
+        <section id="promises" class="container">
+            <h2>My Promises to You</h2>
+            <div class="promise-grid">
+                <div class="glass-card promise-card">
+                    <p id="promise-1">I’ll listen first, always.</p>
+                </div>
+                <div class="glass-card promise-card">
+                    <p id="promise-2">I’ll make you your favorite tea when you're sad.</p>
+                </div>
+                <div class="glass-card promise-card">
+                    <p id="promise-3">I'll hold you tighter when words fail.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- [ MEMORIES ] -->
+        <section id="memories" class="container">
+            <h2>Our Cherished Memories</h2>
+            <div class="memory-carousel">
+                <!-- Memories will be populated by JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- [ FOOTER ] -->
+    <footer>
+        <div class="container">
+            <p>Made by me — with apologies, promises, and endless love. <span class="pulsing-heart">❤</span></p>
+            <p id="live-date">November 9, 2025</p>
+        </div>
+    </footer>
+
+    <!-- [ MODAL: THE LETTER ] -->
+    <div id="letter-modal" class="modal">
+        <div class="modal-content glass-card">
+            <h3>My Dearest Love,</h3>
+            <p id="typed-letter"></p>
+            <div class="button-group">
+                <button id="modal-forgive-btn" class="btn btn-primary">I forgive you ❤</button>
+                <button id="modal-close-btn" class="btn btn-secondary">Close 🕊</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- [ MODAL: MEMORY OVERLAY ] -->
+    <div id="memory-modal" class="modal">
+        <div class="modal-content glass-card">
+            <p id="memory-modal-text">This is a beautiful memory.</p>
+            <div class="button-group">
+                <button id="memory-modal-close-btn" class="btn btn-secondary">Close 🕊</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js" defer></script>
+
+</body>
+</html>
